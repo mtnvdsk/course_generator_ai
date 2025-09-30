@@ -40,7 +40,7 @@ export default function ChatInterface({ onCourseGenerate }: ChatInterfaceProps) 
     if (onCourseGenerate) {
       try {
         // Call backend to generate course
-        const response = await fetch("http://localhost:3030/api/courses/generatecourse/", {
+        const response = await fetch("https://course-generator-ai-cuc7.onrender.com/api/courses/generatecourse/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

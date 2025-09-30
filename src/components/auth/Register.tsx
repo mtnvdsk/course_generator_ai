@@ -32,7 +32,7 @@ const Register = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3030/api/users/register', {
+      const response = await fetch('https://course-generator-ai-cuc7.onrender.com/api/users/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -66,7 +66,7 @@ const Register = () => {
 
   const handleGoogleAuth = () => {
     setGoogleLoading(true);
-    const googleAuthURL = 'http://localhost:3030/api/users/auth/google';
+    const googleAuthURL = 'https://course-generator-ai-cuc7.onrender.com/api/users/auth/google';
     const width = 500;
     const height = 600;
     const left = window.screen.width / 2 - width / 2;
