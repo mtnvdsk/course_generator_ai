@@ -101,6 +101,9 @@ const Login = () => {
           <p className="text-muted-foreground">Sign in to continue learning</p>
         </CardHeader>
         <CardContent className="space-y-6">
+          <div className="text-sm text-muted-foreground">
+            Course Generator AI helps you turn any topic into a structured course with AI-generated lessons and curated YouTube videos. Sign in to start learning.
+          </div>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Input
@@ -122,8 +125,8 @@ const Login = () => {
                 className="focus-ring"
               />
             </div>
-            <Button 
-              type="submit" 
+            <Button
+              type="submit"
               disabled={loading}
               className="w-full bg-gradient-primary hover:bg-primary-hover shadow-sm"
             >
