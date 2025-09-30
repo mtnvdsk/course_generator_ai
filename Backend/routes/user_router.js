@@ -52,7 +52,7 @@ router.get(
         <body>
           <script>
             // Send token to parent window
-            window.opener.postMessage({ token: "${token}" }, "http://localhost:8080");
+            window.opener.postMessage({ token: "${token}" }, "https://course-generator-ai-eight.vercel.app/");
             window.close();
           </script>
         </body>
