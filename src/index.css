@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ChatGPT-like Learning Platform Design System */
+
+@layer base {
+  :root {
+    /* ChatGPT inspired color palette */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 13%;
+
+    /* Primary emerald green theme inspired by ChatGPT */
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 160 84% 35%;
+
+    /* Secondary neutral grays */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 13%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 13%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 160 84% 39%;
+
+    /* Learning platform specific colors */
+    --sidebar-bg: 0 0% 98%;
+    --sidebar-border: 0 0% 88%;
+    --chat-bg: 0 0% 100%;
+    --chat-user-bg: 160 84% 39%;
+    --chat-ai-bg: 0 0% 96%;
+    --course-active: 160 84% 39%;
+    --course-hover: 160 84% 96%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(160 84% 39%), hsl(160 84% 45%));
+    --gradient-sidebar: linear-gradient(180deg, hsl(0 0% 100%), hsl(0 0% 98%));
+    --gradient-chat: linear-gradient(180deg, hsl(0 0% 100%), hsl(0 0% 99%));
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -2px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -4px hsl(0 0% 0% / 0.1);
+    --shadow-glow: 0 0 20px hsl(160 84% 39% / 0.2);
+
+    /* Animations */
+    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode for ChatGPT-like theme */
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 9%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 160 84% 35%;
+
+    --secondary: 0 0% 14%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 0 0% 14%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 0% 14%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 160 84% 39%;
+
+    /* Dark mode specific colors */
+    --sidebar-bg: 0 0% 9%;
+    --sidebar-border: 0 0% 20%;
+    --chat-bg: 0 0% 7%;
+    --chat-user-bg: 160 84% 39%;
+    --chat-ai-bg: 0 0% 14%;
+    --course-active: 160 84% 39%;
+    --course-hover: 160 84% 15%;
+
+    /* Dark gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(160 84% 39%), hsl(160 84% 45%));
+    --gradient-sidebar: linear-gradient(180deg, hsl(0 0% 9%), hsl(0 0% 7%));
+    --gradient-chat: linear-gradient(180deg, hsl(0 0% 7%), hsl(0 0% 9%));
+
+    --shadow-glow: 0 0 20px hsl(160 84% 39% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv11", "ss01";
+    font-variation-settings: "opsz" 32;
+  }
+
+  /* Custom scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground;
+  }
+
+  /* Custom focus styles */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+
+  /* Typography improvements */
+  .prose {
+    @apply text-foreground;
+  }
+
+  .prose h1, .prose h2, .prose h3, .prose h4 {
+    @apply text-foreground;
+  }
+
+  .prose code {
+    @apply bg-muted px-1 py-0.5 rounded text-sm;
+  }
+
+  .prose pre {
+    @apply bg-muted p-4 rounded-lg overflow-x-auto;
+  }
+}
