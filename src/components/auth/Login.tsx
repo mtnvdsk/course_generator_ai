@@ -89,7 +89,10 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-chat flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-chat flex items-center justify-center p-4 flex-col gap-6 text-center">
+      <div className="max-w-xl text-muted-foreground text-sm md:text-base">
+        Course Generator AI helps you turn any topic into a structured course with AI-generated lessons and curated YouTube videos. Sign in to start learning.
+      </div>
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="text-center space-y-4">
           <div className="flex justify-center">
@@ -101,9 +104,6 @@ const Login = () => {
           <p className="text-muted-foreground">Sign in to continue learning</p>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="text-sm text-muted-foreground">
-            Course Generator AI helps you turn any topic into a structured course with AI-generated lessons and curated YouTube videos. Sign in to start learning.
-          </div>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Input

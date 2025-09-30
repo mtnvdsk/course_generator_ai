@@ -98,7 +98,10 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-chat flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-chat flex items-center justify-center p-4 flex-col gap-6 text-center">
+      <div className="max-w-xl text-muted-foreground text-sm md:text-base">
+        Course Generator AI lets you create structured courses from any topic with AI-crafted lessons and curated YouTube videos. Create your account to begin.
+      </div>
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="text-center space-y-4">
           <div className="flex justify-center">
@@ -110,9 +113,6 @@ const Register = () => {
           <p className="text-muted-foreground">Join us and start learning today</p>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="text-sm text-muted-foreground">
-            Course Generator AI lets you create structured courses from any topic with AI-crafted lessons and curated YouTube videos. Create your account to begin.
-          </div>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Input
