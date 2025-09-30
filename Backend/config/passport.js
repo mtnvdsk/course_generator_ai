@@ -5,7 +5,7 @@ const User = require("../schema/users");
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: "http://localhost:3030/api/users/auth/google/callback",
+  callbackURL: "https://course-generator-ai-eight.vercel.app/api/users/auth/google/callback",
 }, async (accessToken, refreshToken, profile, done) => {
   try {
     // check if user exists
