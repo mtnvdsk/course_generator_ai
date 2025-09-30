@@ -70,7 +70,7 @@ const Login = () => {
     );
 
     const receiveMessage = (event: MessageEvent) => {
-      if (!event.origin.includes('course-generator-ai-eight.vercel.app')) return;
+      if (!event.origin.includes('https://course-generator-ai-eight.vercel.app')) return;
 
       if (event.data?.token) {
         login(event.data.token);
