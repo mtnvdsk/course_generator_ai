@@ -79,7 +79,7 @@ const Register = () => {
     );
 
     const receiveMessage = (event: MessageEvent) => {
-      if (event.origin !== 'https://course-generator-ai-cuc7.onrender.com') return;
+      // if (event.origin !== 'https://course-generator-ai-cuc7.onrender.com') return;
 
       if (event.data?.token) {
         login(event.data.token);
