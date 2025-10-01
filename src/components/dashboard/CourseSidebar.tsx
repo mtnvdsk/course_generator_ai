@@ -71,7 +71,7 @@ export default function CourseSidebar({
         setError(null);
 
         const res = await fetch(
-          "http://localhost:3030/api/courses/getcourse/all/",
+          "https://course-generator-ai-cuc7.onrender.com/api/courses/getcourse/all/",
           {
             method: "GET",
             headers: {
@@ -114,7 +114,7 @@ export default function CourseSidebar({
       setLoading(true);
       setError(null);
 
-      const res = await fetch("http://localhost:3030/api/courses/getcourse/", {
+      const res = await fetch("https://course-generator-ai-cuc7.onrender.com/api/courses/getcourse/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -156,7 +156,7 @@ export default function CourseSidebar({
       setError(null);
 
       const res = await fetch(
-        "http://localhost:3030/api/courses/getcourse/airesult/",
+        "https://course-generator-ai-cuc7.onrender.com/api/courses/getcourse/airesult/",
         {
           method: "POST",
           headers: {
