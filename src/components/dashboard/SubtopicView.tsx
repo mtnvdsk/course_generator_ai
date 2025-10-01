@@ -1,13 +1,15 @@
 import { Sparkles } from "lucide-react";
+import loadingGif from "@/assets/loading.gif";
 
 interface SubtopicViewProps {
   subtopic: {
     name: string;
     ai_result?: string;
   };
+  isLoading?: boolean;
 }
 
-export default function SubtopicView({ subtopic }: SubtopicViewProps) {
+export default function SubtopicView({ subtopic, isLoading = false }: SubtopicViewProps) {
   return (
     <div className="flex flex-col h-full bg-background">
       <div className="flex-1 overflow-y-auto p-6">
@@ -18,9 +20,16 @@ export default function SubtopicView({ subtopic }: SubtopicViewProps) {
               {subtopic.name}
             </h2>
             <div className="prose prose-sm max-w-none">
-              <div className="text-muted-foreground leading-relaxed whitespace-pre-wrap break-words">
-                {subtopic.ai_result || "Loading content..."}
-              </div>
+              {isLoading ? (
+                <div className="flex flex-col items-center justify-center py-12">
+                  <img src={loadingGif} alt="Loading..." className="w-24 h-24 mb-4" />
+                  <p className="text-muted-foreground text-center">Loading content...</p>
+                </div>
+              ) : (
+                <div className="text-muted-foreground leading-relaxed whitespace-pre-wrap break-words">
+                  {subtopic.ai_result || "Loading content..."}
+                </div>
+              )}
             </div>
           </div>
         </div>

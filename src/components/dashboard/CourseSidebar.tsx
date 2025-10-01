@@ -32,7 +32,7 @@ interface CourseSidebarProps {
   onBackToCourses: () => void;
   collapsed: boolean;
   onToggleCollapse: () => void;
-  onSubtopicLoadingChange?: (loading: boolean) => void;
+  onLoadingChange?: (loading: boolean) => void;
 }
 
 export default function CourseSidebar({
@@ -45,7 +45,7 @@ export default function CourseSidebar({
   onBackToCourses,
   collapsed,
   onToggleCollapse,
-  onSubtopicLoadingChange,
+  onLoadingChange,
 }: CourseSidebarProps) {
   const [expandedTopics, setExpandedTopics] = useState(new Set<number>());
   const [courses, setCourses] = useState<Course[]>([]);
@@ -71,7 +71,7 @@ export default function CourseSidebar({
         setError(null);
 
         const res = await fetch(
-          "https://course-generator-ai-cuc7.onrender.com/api/courses/getcourse/all/",
+          "http://localhost:3030/api/courses/getcourse/all/",
           {
             method: "GET",
             headers: {
@@ -114,7 +114,7 @@ export default function CourseSidebar({
       setLoading(true);
       setError(null);
 
-      const res = await fetch("https://course-generator-ai-cuc7.onrender.com/api/courses/getcourse/", {
+      const res = await fetch("http://localhost:3030/api/courses/getcourse/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -152,11 +152,11 @@ export default function CourseSidebar({
   const handleSubtopicSelect = async (topic: Topic, subtopicName: string) => {
     try {
       setLoading(true);
-      onSubtopicLoadingChange && onSubtopicLoadingChange(true);
+      onLoadingChange?.(true);
       setError(null);
 
       const res = await fetch(
-        "https://course-generator-ai-cuc7.onrender.com/api/courses/getcourse/airesult/",
+        "http://localhost:3030/api/courses/getcourse/airesult/",
         {
           method: "POST",
           headers: {
@@ -188,14 +188,15 @@ export default function CourseSidebar({
       toast.error("Failed to load subtopic content");
     } finally {
       setLoading(false);
-      onSubtopicLoadingChange && onSubtopicLoadingChange(false);
+      onLoadingChange?.(false);
     }
   };
 
   return (
     <div
-      className={`bg-gradient-sidebar border-r border-sidebar-border flex flex-col transition-all duration-300 ${collapsed ? "w-16" : "w-80"
-        }`}
+      className={`bg-gradient-sidebar border-r border-sidebar-border flex flex-col transition-all duration-300 ${
+        collapsed ? "w-16" : "w-80"
+      }`}
     >
       {/* Header */}
       <div className="p-4 border-b border-sidebar-border flex items-center justify-between bg-card/30">
@@ -281,10 +282,11 @@ export default function CourseSidebar({
                 <div key={topic.id} className="space-y-2">
                   <div
                     onClick={() => toggleTopic(topic.id)}
-                    className={`p-3 rounded-lg border cursor-pointer transition-colors ${selectedTopic?.id === topic.id
+                    className={`p-3 rounded-lg border cursor-pointer transition-colors ${
+                      selectedTopic?.id === topic.id
                         ? "border-primary bg-primary/10"
                         : "border-border bg-card hover:bg-card/80"
-                      }`}
+                    }`}
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-foreground font-medium text-sm">
@@ -292,8 +294,9 @@ export default function CourseSidebar({
                       </span>
                       {!collapsed && (
                         <ChevronRight
-                          className={`h-4 w-4 text-muted-foreground transition-transform ${expandedTopics.has(topic.id) ? "rotate-90" : ""
-                            }`}
+                          className={`h-4 w-4 text-muted-foreground transition-transform ${
+                            expandedTopics.has(topic.id) ? "rotate-90" : ""
+                          }`}
                         />
                       )}
                     </div>
@@ -310,10 +313,11 @@ export default function CourseSidebar({
                           <div
                             key={index}
                             onClick={() => handleSubtopicSelect(topic, subtopicName)}
-                            className={`p-2 rounded-md cursor-pointer transition-colors text-sm ${selectedSubtopic?.name === subtopicName
+                            className={`p-2 rounded-md cursor-pointer transition-colors text-sm ${
+                              selectedSubtopic?.name === subtopicName
                                 ? "bg-primary text-primary-foreground"
                                 : "text-muted-foreground hover:bg-background/50 hover:text-foreground"
-                              }`}
+                            }`}
                           >
                             <div className="flex items-center gap-2">
                               <Play className="h-3 w-3" />
